@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+
+    <div class="col-lg-4 p-3">
+        <h3 class=" m-3">Update User Profile</h3>
+
+        <div class=" p-5 bg-white element-shadow">
+
+            <!-- Edit Form -->
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class=" col-lg-12 mb-3">
+                        {{profile_form.first_name}}
+                    </div>
+                    <div class=" col-lg-12 mb-3">
+                        {{profile_form.last_name}}
+                    </div>
+                    <div class=" col-lg-12 mb-3">
+                        {{form.username}}
+                        <small class="text-danger mt-2">{{form.username.errors}}</small>
+                    </div>
+                    <div class=" col-lg-12 mb-3">
+                        {{profile_form.email}}
+                        <small class="text-danger mt-2">{{profile_form.email.errors}}</small>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

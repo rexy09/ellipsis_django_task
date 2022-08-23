@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="my-3">
+    <h3>List of Short URLs</h3>
+
+</div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-stripe table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Short URL</th>
+                    <th scope="col" style="width: 20%;">Full URL</th>
+                    <th scope="col" >Expired at</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for link in links %}
+                  <tr>
+                      <th scope="row">{{forloop.counter}}</th>
+                      <td> <a
+                              href="http://127.0.0.1:8000/s/{{link.short_url}}/">http://127.0.0.1:8000/s/{{link.short_url}}/</a>
+                      </td>
+                      <td> <a
+                              href="{{link.full_url}}">{{link.full_url}}</a>
+                      </td>
+                      <td>{{link.date_expired}}</td>
+                      <td>
+                        {{link.short_link.disabled}}
+                      </td>
+                      <td>
+                        <a href="{% url 'dashboard:edit_short_url' link=link.short_url %}" class="m-2">Edit</a>
+                        <a href="{% url 'dashboard:delete_short_url' link=link.short_url %}" class="m-2">Delete</a>
+                        <a href="{% url 'dashboard:disable_short_url' link=link.short_url %}"
+                            class="m-2">Disable</a>
+
+
+                        
+                      </td>
+
+                  </tr>
+                {% endfor %}
+                
+                
+            </tbody>
+        </table>
+    </div>
+   
+   
+</div>
+
+    
+{% endblock content %}
+    

@@ -1,0 +1,9 @@
+Django==3.2
+gunicorn 
+whitenoise 
+psycopg2-binary
+python-dotenv
+django-widget-tweaks
+six
+Pillow
+django-link-shortener

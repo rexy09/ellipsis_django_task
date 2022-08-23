@@ -1,0 +1,56 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-4 p-3">
+            <h3 class="my-3 text-center">Register</h3>
+
+            <div class="py-3 bg-white element-shadow">
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class=" col-lg-12 mb-3">
+                            {{profile_form.first_name}}
+                        </div>
+                        <div class=" col-lg-12 mb-3">
+                            {{profile_form.last_name}}
+                        </div>
+                        <div class=" col-lg-12 mb-3">
+                            {{form.username}}
+
+                            <small class="text-danger mt-2">{{form.username.errors}}</small>
+
+                        </div>
+                        <div class=" col-lg-12 mb-3">
+                            {{profile_form.email}}
+
+                            <small class="text-danger mt-2">{{profile_form.email.errors}}</small>
+                        </div>
+                        <div class=" col-lg-12 mb-3">
+                            {{form.password1}}
+                            <small class="text-danger mt-2">{{form.password1.errors}}</small>
+
+                        </div>
+                        <div class=" col-lg-12 mb-3">
+                            {{form.password2}}
+                            <small class="text-danger mt-2">{{form.password2.errors}}</small>
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Register</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

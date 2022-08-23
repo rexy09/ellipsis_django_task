@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<h3 class=" m-3">User Details</h3>
+
+<div class="bg-white element-shadow p-3">
+    <div class="row">
+        <div class=" col-lg-4 d-flex justify-content-center">
+
+            <img src="{% static 'img/profile.png' %}" alt="" width="300">
+
+        </div>
+        <div class=" col-lg-8">
+
+            <div class="mt-lg-5 pt-3">
+                <h3 class=" font-weight-bold">{{request.user.profile.first_name}} {{request.user.profile.last_name}}
+                </h3>
+                <h5 class="text-muted">@{{request.user.username}}</h5>
+                <p>{{request.user.profile.email}}</p>
+
+            </div>
+
+            <div class="row mt-5">
+                <!-- Edit link -->
+                <div class=" col-lg-2 mb-4">
+                    <a href="{% url 'accounts:edit_user_profile' %}"
+                        class="text-decoration-none btn btn-outline-primary">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="">Edit</span>
+                    </a>
+                </div>
+                <div class=" col-lg-2 mb-4">
+                    <a href="{% url 'accounts:change_password' %}"
+                        class="text-decoration-none btn btn-outline-warning">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="">Change password</span>
+                    </a>
+                </div>
+               
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

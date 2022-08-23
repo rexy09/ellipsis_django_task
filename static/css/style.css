@@ -1,0 +1,31 @@
+* {
+    box-sizing:border-box;
+}
+
+body {
+    font-family: 'Andika';
+}
+
+.element-shadow{
+    box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
+    -8px -8px 18px 0 rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+}
+
+.text-color-1 {
+    color:#130f49 !important;
+}
+
+.text-color-2 {
+    color: #34a1cd !important;
+}
+
+.bg-color-1 {
+    background-color:#f2f9ff!important;
+
+}
+
+.side-bar-link:hover {
+    background-color: #d9f4fe;
+    border-radius: 8px;
+}
