@@ -9,6 +9,7 @@ from datetime import datetime
 class ShortUrl(models.Model):
     link = models.OneToOneField(
         UrlMap, related_name='short_link', on_delete=models.CASCADE)
+    expired = models.BooleanField(default=False)
     
     @property
     def disabled(self):

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mba7$t$akcypbw^a(_q%90)@+s*bxnla8fraf&rsro2g2g2f^e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','134.122.117.29']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '134.122.117.29']
 
 
 # Application definition
@@ -162,3 +162,11 @@ LOGIN_URL = 'accounts:signin'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# CELERY CONFIGURATIONS
+CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_TIMEZONE = "Africa/Dar_es_Salaam"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = 'json'
