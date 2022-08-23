@@ -206,7 +206,7 @@ def reset_password_email(request):
 					})
 
 					message = strip_tags(html_message)
-					from_email = 'SHORTNER <support@gopronow.tech>'
+					from_email = 'SHORTNER <support@test.com>'
 
 					recipient_list = [profile.email]
 
@@ -262,7 +262,7 @@ def resend_password_reset_email(request, *args, **kwargs):
 			})
 
 			message = strip_tags(html_message)
-			from_email = 'SHORTNER <support@gopronow.tech>'
+			from_email = 'SHORTNER <support@test.com>'
 
 			recipient_list = [profile.email]
 
