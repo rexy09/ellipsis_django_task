@@ -20,7 +20,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
-# For linux you can embed beat in worker process i.e celery -A rikolto_workspace worker -B -l INFO
+# For linux you can embed beat in worker process i.e celery -A ellipsis_django_task worker -B -l INFO
 # celery -A ellipsis_django_task beat -l INFO
 # celery -A ellipsis_django_task worker -l INFO
 
@@ -31,15 +31,11 @@ app.autodiscover_tasks()
  
 
 app.conf.beat_schedule = {
-    # Executes every morning at 09:00 a.m.
-    'scheduled_loan_reminder_message': {
-        'task': 'administrator.tasks.send_reminder_message',
-        'schedule': crontab(hour=9, minute=0),
+    # Executes every morning at 10 seconds
+    'send_url_expire_email_notification': {
+        'task': 'dashboard.tasks.send_url_expire_email_notification',
+        "schedule": 10,
+
     },
-    # Executes every morning at 08:00 a.m.
-    'scheduled_loan_deadline_message': {
-        'task': 'administrator.tasks.send_deadline_message',
-        "schedule": crontab(hour=8, minute=0),
-        # "schedule": 10,
-    },
+   
 }

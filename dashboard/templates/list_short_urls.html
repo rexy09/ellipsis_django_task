@@ -28,7 +28,7 @@
                   <tr>
                       <th scope="row">{{forloop.counter}}</th>
                       <td> <a
-                              href="/s/{{link.short_url}}/">/s/{{link.short_url}}/</a>
+                              href="http://{{domain}}/s/{{link.short_url}}/">http://{{domain}}/s/{{link.short_url}}/</a>
                       </td>
                       <td> <a
                               href="{{link.full_url}}">{{link.full_url}}</a>
@@ -42,8 +42,6 @@
                         <a href="{% url 'dashboard:delete_short_url' link=link.short_url %}" class="m-2">Delete</a>
                         <a href="{% url 'dashboard:disable_short_url' link=link.short_url %}"
                             class="m-2">Disable</a>
-
-
                         
                       </td>
 

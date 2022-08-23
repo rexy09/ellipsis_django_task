@@ -5,7 +5,7 @@ from shortener.models import UrlMap
 from .models import ShortUrl
 from datetime import datetime
 
-# from django.db.models import Value, BooleanField
+from django.contrib.sites.shortcuts import get_current_site
 
 
 # Create your views here.
@@ -30,20 +30,26 @@ def short_url(request, *args, **kwargs):
     link = kwargs.get('link')
     url_obj = UrlMap.objects.filter(short_url=link, user=request.user).first()
 
- 
+    current_site = get_current_site(request)
+
     context = {
         'link': link,
         'url_obj': url_obj,
+        'domain': current_site.domain,
+
     }
     return render(request, 'short_url.html', context)
 
 
 @login_required
 def list_short_urls(request, *args, **kwargs):
-    links = UrlMap.objects.filter(user=request.user).all()
+    links = UrlMap.objects.filter(user=request.user).all().order_by('-pk')
+    current_site = get_current_site(request)
 
     context = {
-        'links': links
+        'links': links,
+        'domain': current_site.domain,
+
     }
     return render(request, 'list_short_urls.html', context)
 

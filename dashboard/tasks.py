@@ -17,10 +17,15 @@ def send_url_expire_email_notification(*args, **kwargs):
 
 	if links:
 		for link in links:
-			message = f"Dear {link.user.username}, as short URL: {link.short_url} for {link.full_url} has expired."
+			try:
+				message = f"Dear {link.link.user.username}, as short URL: {link.link.short_url} for {link.link.full_url} has expired."
 
-			send_mail(subject="SHORT URL EXPIRED", message=message,
-			          recipient_list=[link.user.profile.email],)
+				send_mail(subject="SHORT URL EXPIRED", message=message,
+                                    recipient_list=[link.link.user.profile.email], from_email='admin@test.com')
+			except Exception as e:
+				print(e)
+				pass
+			
 			
 			link.expired = True
 			link.save()
